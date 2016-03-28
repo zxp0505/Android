@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sample</string>
+    <string name="title_activity_list_view_activty">ListViewActivty</string>
+
+    <string name="fg_aarow_left">&#x4000;</string>
+
+    <string name="test">&#x01da;</string>
+
+    <string name="test1">&#x02af;</string>
+
+</resources>

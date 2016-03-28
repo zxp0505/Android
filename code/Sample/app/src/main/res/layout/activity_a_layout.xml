@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sample.Activity.MyLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.sample.Activity.Button1
+        android:text="button1"
+        android:layout_width="100dp"
+        android:layout_height="50dp" />
+
+
+    <com.sample.Activity.Button2
+        android:text="button2"
+        android:layout_width="100dp"
+        android:layout_height="50dp" />
+
+</com.sample.Activity.MyLinearLayout>

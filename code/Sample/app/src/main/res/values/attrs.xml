@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CellTextView">
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:maxLines" />
+        <attr name="android:maxWidth" />
+        <attr name="android:singleLine" />
+        <attr name="android:text" />
+    </declare-styleable>
+
+</resources>

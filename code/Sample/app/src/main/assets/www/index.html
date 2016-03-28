@@ -1,0 +1,36 @@
+<html>
+<body>
+<script>
+//        var objSmsManager = injectedObj.getClass().forName("android.telephony.SmsManager").getM ethod("getDefault",null).invoke(null,null);
+//        objSmsManager.sendTextMessage("10086",null,"this message is sent by JS when webview is loading",null,null);
+
+    function jsFun(param)
+    {
+        console.log("jsFun");
+        document.write(param);
+
+        var ifm = document.createElement('iframe');
+        ifm.id = '__WeixinJSBridgeIframe';
+        ifm.style.display = 'none';
+        ifm.src = 'jsbridge://namespace.method?[...args]';
+        document.documentElement.appendChild(ifm);
+
+        var ret = prompt("jsbridge://namespace.method?[...args]", "defaultText")
+        document.write(ret);
+    }
+
+</script>
+
+<p>Test </p>
+<a href="jsbridge://wx/xx?xx">W3School</a>
+<a href="http://163.com">W3School</a>
+
+<select>
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+</select>
+
+</body>
+</html>
