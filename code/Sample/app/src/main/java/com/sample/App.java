@@ -6,10 +6,6 @@ import android.content.Context;
 import com.sample.performance.ActivityLifeCycleTimeUseTracker;
 import com.sample.performance.ViewHericacy;
 
-/**
- * Created by clarkehe on 1/18/16.
- * Todo:
- */
 public class App extends Application {
 
     public App() {
@@ -21,7 +17,6 @@ public class App extends Application {
     public static Context getContext() {
         return mAppContext;
     }
-
 
     @Override
     public void onCreate() {

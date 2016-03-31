@@ -5,17 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.sample.App;
-
 import java.util.HashMap;
 
-
-/**
- * 一个监控Activity生命周期运行时间的简单实现类
- *
- * @author shwenzhang
- */
 public class ActivityLifeCycleTimeUseTracker extends ActivityLifeCycleTracker.EnhanceActivityLifeCycleCallback {
     private static final String TAG = "ActivityLifeCycle";
 
@@ -61,6 +53,7 @@ public class ActivityLifeCycleTimeUseTracker extends ActivityLifeCycleTracker.En
                                      Activity activity) {
         if (activity == null)
             return;
+
         map.put(activity.hashCode(), System.currentTimeMillis());
     }
 
@@ -68,6 +61,7 @@ public class ActivityLifeCycleTimeUseTracker extends ActivityLifeCycleTracker.En
                                    Activity activity, String log) {
         if (activity == null)
             return;
+
         int hashcode = activity.hashCode();
         Long begin = map.get(hashcode);
         if (begin != null) {
@@ -100,7 +94,6 @@ public class ActivityLifeCycleTimeUseTracker extends ActivityLifeCycleTracker.En
     public void onBeforeActivityDestroy(Activity activity) {
         super.onBeforeActivityDestroy(activity);
         onActivityTimeBegin(mDestroyTimeUsed, activity);
-
     }
 
     @Override
@@ -168,5 +161,4 @@ public class ActivityLifeCycleTimeUseTracker extends ActivityLifeCycleTracker.En
         super.onAfterActivityStop(activity);
         onActivityTimeEnd(mStopTimeUsed, activity, "onActivityStop");
     }
-
 }

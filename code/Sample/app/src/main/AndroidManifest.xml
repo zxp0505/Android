@@ -14,40 +14,38 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".MainActivity">
-        </activity>
-
-        <activity android:name=".MediaProjectionDemo">
-        </activity>
-
-        <activity
-            android:name=".ListViewActivty"
-            android:label="@string/title_activity_list_view_activty"
-            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".MediaProjectionDemo">
+        </activity>
+
+        <activity
+            android:name=".classLoader.getgameapp.GameAppListActivity"
+            android:label="@string/title_activity_list_view_activty"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
         <activity android:name=".web.WebViewActivity"
             android:label="WebView">
         </activity>
 
-        <activity android:name=".Activity.ActivityA"
+        <activity android:name=".lifecycle.ActivityA"
             android:label="ActivityA"
             android:configChanges="orientation">
-
         </activity>
 
-        <activity android:name=".Activity.ActivityB"
+        <activity android:name=".lifecycle.ActivityB"
             android:label="ActivityB">
         </activity>
 
         <activity android:name="com.sample.Fragment.MyActivtiy">
         </activity>
 
-        <activity android:name="com.sample.classLoader.SampleActivity">
-
+        <activity android:name=".classLoader.ClassLoaderActivity">
         </activity>
 
     </application>

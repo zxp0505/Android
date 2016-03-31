@@ -12,11 +12,9 @@ import java.util.Set;
 public class ActivityLifeCycleTracker {
 
     private boolean mCanReflect = false;
-
     private static volatile ActivityLifeCycleTracker sInstance;
 
-    private ActivityLifeCycleTracker() {
-    }
+    private ActivityLifeCycleTracker() {}
 
     public static ActivityLifeCycleTracker getInstance() {
         if (sInstance == null) {
@@ -29,11 +27,6 @@ public class ActivityLifeCycleTracker {
         return sInstance;
     }
 
-    /**
-     * 回调类，由使用者按需实现
-     *
-     * @author Tommy
-     */
     public static abstract class EnhanceActivityLifeCycleCallback {
         public void onBeforeActivityCreate(Activity activity, Bundle savedInstanceState) {
         }
