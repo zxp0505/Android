@@ -46,8 +46,7 @@ public class GetGameApp {
             "com.yinhan.lib.Cocos2dxHelper"
     };
 
-    private GetGameApp() {
-    }
+    private GetGameApp() {}
 
     /**
      * 本机已安装的非系统app. 会比较耗时，不能在主线程中调用
@@ -77,7 +76,6 @@ public class GetGameApp {
                 appList.add(tmpInfo);
             }
         }
-
         return appList;
     }
 
@@ -189,16 +187,34 @@ public class GetGameApp {
         Log.d(TAG, "checkIsGameFromMultiDex, packageName:" + packageName);
 
         List<File> files = extractMultiDexFilesFromApp(context, packageName);
-        if (files == null || files.size() == 0) return false;
+        if (files == null || files.size() == 0) {
+            return false;
+        }
 
         final int size = files.size();
         Log.d(TAG, "checkIsGameFromMultiDex, dex file count: " + size);
 
+        boolean result = false;
         for (int i = 0; i < size; i++) {
-            boolean ret = checkDexHasGameClassName(context, files.get(i).getAbsolutePath());
-            if (ret) return true;
+            result = checkDexHasGameClassName(context, packageName, files.get(i).getAbsolutePath());
+            if (result) break;
         }
-        return false;
+
+        clearTempDexFiles(context, packageName);
+        return result;
+    }
+
+    private static void clearTempDexFiles(Context context, String packageName) {
+        final File dexDir = new File(context.getCacheDir(), packageName);
+        deleteRecursive(dexDir);
+    }
+
+    private static void deleteRecursive(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory())
+            for (File child : fileOrDirectory.listFiles()) {
+                deleteRecursive(child);
+            }
+        fileOrDirectory.delete();
     }
 
     static private List<File> extractMultiDexFilesFromApp(Context context, String packageName) {
@@ -211,7 +227,9 @@ public class GetGameApp {
         }
 
         List<File> files = null;
-        File dexDir = new File(context.getCacheDir(), "-secondary-dexes");
+        File dexDir = new File(context.getCacheDir(), packageName +  "/dexes");
+        dexDir.mkdirs();
+
         try {
             files = MultiDexExtractor.load(context, path, dexDir, true);
         } catch (IOException e) {
@@ -221,12 +239,12 @@ public class GetGameApp {
         return files;
     }
 
-    static private boolean checkDexHasGameClassName(Context context, String dexFilePath) {
+    static private boolean checkDexHasGameClassName(Context context, String packageName,  String dexFilePath) {
+
         Log.d(TAG, "checkDexHasGameClassName, dexFile: " + dexFilePath);
 
-        //String cachePath = Environment.getExternalStorageDirectory() + "/";
-        File dexOutputDir = new File(context.getCacheDir(), "-secondary-dexes-out");
-        dexOutputDir.mkdir();
+        File dexOutputDir = new File(context.getCacheDir(), packageName + "/opt-dexes");
+        dexOutputDir.mkdirs();
 
         DexFile dexFile = null;
         try {
@@ -262,10 +280,7 @@ public class GetGameApp {
         }
         return false;
  */
-
     }
-
-
 
     static private String getApkPathByPackageName(Context context, String packageName) {
         Log.d(TAG, "getApkPathByPackageName," + "packageName :" + packageName);
@@ -308,7 +323,7 @@ public class GetGameApp {
                 ZipEntry entry = entries.nextElement();
                 final String name = entry.getName();
                 if (name.startsWith("lib")) {
-                    Log.d(TAG, "Entry name: " + name);
+                    //Log.d(TAG, "Entry name: " + name);
                     if (isNameContainGameLibName(name)) {
                         bHasGameLib = true;
                         break;
@@ -327,7 +342,6 @@ public class GetGameApp {
                 }
             }
         }
-
         return bHasGameLib;
     }
 
@@ -358,7 +372,7 @@ public class GetGameApp {
         public String versionName = "";
         public int versionCode = 0;
         public Drawable appIcon = null;
-
+        public Boolean bGame = null;
         public void print() {
             Log.v(TAG, "Name:" + appName + " Package:" + packageName);
             Log.v(TAG, "Name:" + appName + " versionName:" + versionName);

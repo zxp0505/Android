@@ -2,11 +2,8 @@ package com.sample.classLoader.getgameapp;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,15 +17,13 @@ import android.widget.TextView;
 import com.sample.R;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import dalvik.system.DexClassLoader;
 
-
 public class GameAppListActivity extends Activity {
 
-    private final static String TAG = "ListViewActivty";
+    private final static String TAG = "ListViewActivity";
 
     ListView mListView;
     CodeLearnAdapter mAdapter;
@@ -45,57 +40,20 @@ public class GameAppListActivity extends Activity {
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getInstalledApp();
+                appList = GetGameApp.getInstalledApp(GameAppListActivity.this);
                 mAdapter.setData(appList);
                 mAdapter.notifyDataSetChanged();
             }
         }, 100);
     }
 
-    public class AppInfo {
-        public String appName="";
-        public String packageName="";
-        public String versionName="";
-        public int versionCode=0;
-        public Drawable appIcon=null;
-        public Boolean bGame = null;
-        public void print()
-        {
-            Log.v("app", "Name:" + appName + " Package:" + packageName);
-            Log.v("app","Name:"+appName+" versionName:"+versionName);
-            Log.v("app","Name:"+appName+" versionCode:"+versionCode);
-        }
-    }
-
-    ArrayList<AppInfo> appList = new ArrayList<AppInfo>(); //用来存储获取的应用信息数据
-
-    private void getInstalledApp() {
-
-        List<PackageInfo> packages = getPackageManager().getInstalledPackages(0);
-
-        for (int i = 0; i < packages.size(); i++) {
-            PackageInfo packageInfo = packages.get(i);
-            AppInfo tmpInfo = new AppInfo();
-            tmpInfo.appName = packageInfo.applicationInfo.loadLabel(getPackageManager()).toString();
-            tmpInfo.packageName = packageInfo.packageName;
-            tmpInfo.versionName = packageInfo.versionName;
-            tmpInfo.versionCode = packageInfo.versionCode;
-            tmpInfo.appIcon = packageInfo.applicationInfo.loadIcon(getPackageManager());
-
-            tmpInfo.print();
-
-            //Only display the non-system app info
-            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-                appList.add(tmpInfo);//如果非系统应用，则添加至appList
-            }
-        }
-    }
+    List<GetGameApp.AppInfo> appList;
 
     public class CodeLearnAdapter extends BaseAdapter
     {
         private final Activity context;
 
-        ArrayList<AppInfo> mAppList;
+        List<GetGameApp.AppInfo> mAppList;
 
          class ViewHolder {
             public TextView text;
@@ -106,38 +64,29 @@ public class GameAppListActivity extends Activity {
             this.context = context;
         }
 
-        public void setData(ArrayList<AppInfo> _appList)
+        public void setData(List<GetGameApp.AppInfo> _appList)
         {
             mAppList = _appList;
         }
 
         @Override
         public int getCount() {
-            // TODO Auto-generated method stub
             if (mAppList == null) return 0;
-
             return mAppList.size();
         }
 
         @Override
         public Object getItem(int arg0) {
-            // TODO Auto-generated method stub
-            return new String("" + arg0);
+            return "" + arg0;
         }
 
         @Override
         public long getItemId(int arg0) {
-            // TODO Auto-generated method stub
             return arg0;
         }
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            /**
-            System.out.println("Stack***********************" + position);
-            for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
-                System.out.println(ste);
-            }*/
 
             View rowView = convertView;
             // reuse views
@@ -155,36 +104,30 @@ public class GameAppListActivity extends Activity {
             String s = mAppList.get(position).appName;
             holder.text.setText(s);
 
-            final AppInfo appInfo = mAppList.get(position);
+            final GetGameApp.AppInfo appInfo = mAppList.get(position);
             final String packageName = mAppList.get(position).packageName;
 
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //enumClass(ListViewActivty.this, packageName, true);
-
-                    appInfo.bGame = GetGameApp.checkIsGame(GameAppListActivity.this, packageName);
-
-                    if (appInfo.bGame){
-                        notifyDataSetChanged();
-                    }
-
-                    /**
-                    try {
-                        MultiDexHelper.getAllClasses(ListViewActivty.this);
-                    }
-                    catch (Exception e){
-
-                    }*/
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            super.run();
+                            appInfo.bGame = GetGameApp.checkIsGame(GameAppListActivity.this, packageName);
+                            if (appInfo.bGame){
+                                GameAppListActivity.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                            }
+                        }
+                    }.start();
                 }
             });
 
-            /**
-
-            if (appInfo.bGame == null){
-                appInfo.bGame = enumClass(ListViewActivty.this, packageName, false);
-            }
-*/
             if (appInfo.bGame == null || !appInfo.bGame){
                 rowView.setBackgroundColor(Color.BLACK);
             }else{
@@ -202,7 +145,6 @@ public class GameAppListActivity extends Activity {
 
         try {
             path = context.getPackageManager().getApplicationInfo(packageName, 0).sourceDir;
-            // 获得某个程序的APK路径
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -233,7 +175,6 @@ public class GameAppListActivity extends Activity {
         File dexOutputDir = context.getCacheDir();
         DexClassLoader classLoader = new DexClassLoader(path, dexOutputDir.getAbsolutePath(), null, getClassLoader());
         try{
-            //
             mLoadClass = classLoader.loadClass("android.support.v4.content.ContextCompat");
             //mLoadClass = classLoader.loadClass("org.cocos2dx.lib.Cocos2dxActivity");
         }catch (Exception e){
@@ -279,24 +220,6 @@ public class GameAppListActivity extends Activity {
         return bGame;
         */
     }
-
-    private boolean isGame(final String className)
-    {
-        String [] strings = {"com.unity3d.player",
-                "org.cocos2dx.lib",
-                "com.badlogic.gdx",
-                "com.tencent.game.npengine",
-                "com.tencent.tmassistantsdk",
-                "cn.egame.terminal.sdk"};
-        int size = strings.length;
-        for (int i=0; i<size; i++){
-            if (className.contains(strings[i])){
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
 
 //0. 特征码. 规则添加？ 混淆。分DEX.
