@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">FontIcon</string>
+
+    <!--S 字体图标字符 -->
+    <!--排序按十六进制顺序排序-->
+    <string name="fg_aarow_left">&#x4000;</string>
+    <string name="fg_comment">&#x4001;</string>
+    <string name="fg_discover">&#x4002;</string>
+    <string name="fg_female">&#x4003;</string>
+    <string name="fg_levels">&#x4004;</string>
+    <string name="fg_support">&#x4005;</string>
+    <string name="fg_stats">&#x4006;</string>
+    <string name="fg_share">&#x4007;</string>
+    <string name="fg_game_line">&#x4008;</string>
+    <string name="fg_mine">&#x4009;</string>
+    <string name="fg_male">&#x400a;</string>
+    <string name="fg_liked">&#x400b;</string>
+    <string name="fg_like">&#x400c;</string>
+    <string name="fg_search">&#x400d;</string>
+    <string name="fg_img">&#x400e;</string>
+    <string name="fg_em">&#x400f;</string>
+    <string name="fg_clock">&#x4010;</string>
+    <string name="fg_close">&#x4011;</string>
+    <string name="fg_support_i">&#x4012;</string>
+    <string name="fg_edit">&#x4013;</string>
+    <string name="fg_collect">&#x4014;</string>
+    <string name="fg_support_line">&#x4015;</string>
+    <string name="fg_newbbs">&#x4016;</string>
+    <string name="fg_time">&#x4017;</string>
+    <string name="fg_setting">&#x4018;</string>
+    <string name="fg_topic">&#x4019;</string>
+    <string name="fg_fav">&#x401a;</string>
+    <string name="fg_download">&#x401b;</string>
+    <string name="fg_personal_info">&#x401c;</string>
+    <string name="fg_more">&#x401d;</string>
+    <string name="fg_enter">&#x401e;</string>
+    <string name="fg_back">&#x401f;</string>
+    <string name="fg_gift">&#x4020;</string>
+    <string name="fg_video">&#x4021;</string>
+    <string name="fg_cry">&#x4022;</string>
+    <string name="fg_reshare">&#x4023;</string>
+    <string name="fg_record">&#x4024;</string>
+    <string name="fg_upload">&#x4025;</string>
+    <string name="fg_post">&#x4026;</string>
+    <string name="fg_shike">&#x4027;</string>
+    <string name="fg_shike_line">&#x4028;</string>
+    <string name="fg_more_arrow">&#x4029;</string>
+    <string name="fg_play">&#x402a;</string>
+    <string name="fg_activity">&#x402b;</string>
+    <string name="fg_set">&#x402c;</string>
+    <string name="fg_game">&#x402d;</string>
+    <string name="fg_home">&#x402e;</string>
+    <string name="fg_home_line">&#x402f;</string>
+    <string name="fg_mine_line">&#x4030;</string>
+    <string name="fg_email">&#x4031;</string>
+
+    <!--E 字体图标字符 -->
+</resources>
