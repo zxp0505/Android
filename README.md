@@ -68,7 +68,7 @@ H5与Native之争，没有高下，现在都是Hybrid App（混合型应用）�
 
 [H5缓存机制浅析-移动端Web加载性能优化](http://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&mid=402077566&idx=1&sn=def3337205c3aec5e0fde2476ee03397&scene=0&key=ac89cba618d2d976159e30761eefe9953dc2030a7d72c1872c445a8caaa0f1d3cc4eb416a1c7cfb82651db48d11f3f90&ascene=0&uin=MjAyNzY1NTU%3D&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.1+build(15B42)&version=11020201&pass_ticket=Ot%2FkhKXqAqrGFzCH568zK5zy%2FSd6Yamb01L2dKV6dtY%3D)
 
-###架构
+### 架构
        
 ###音视频与直播技术
 2016年直播应用大爆发，总结直播相关的技术问题。建议先看下《移动直播技术秒开优化经验（含PPT）》，对视频直播的整个技术栈及相关问题有比较清晰的描述。
@@ -85,7 +85,7 @@ H5与Native之争，没有高下，现在都是Hybrid App（混合型应用）�
 [独家分享【Android ANR的成因分析及分析定位技术】](http://developer.baidu.com/forum/topic/show?topicId=3938)       
 [ANR机制以及问题分析](http://duanqz.github.io/2015-10-12-ANR-Analysis#service)      
 
-### 编程技术
+### 编程技术
 与语言无关的一些编程技术与思想。
 
 [侵入式接口、反向控制、依赖注入](https://github.com/clarkehe/work/wiki/Coding(1):-%E4%BE%B5%E5%85%A5%E5%BC%8F%E6%8E%A5%E5%8F%A3%E3%80%81%E5%8F%8D%E5%90%91%E6%8E%A7%E5%88%B6%E3%80%81%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5)              
