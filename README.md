@@ -105,7 +105,8 @@ H5与Native之争，没有高下，现在都是Hybrid App（混合型应用）�
 [Activity启动模式图文详解](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0520/2897.html)   
 
 ### Unity
-[协程](http://twistedoakstudios.com/blog/Post83_coroutines-more-than-you-want-to-know)        
+[协程](http://twistedoakstudios.com/blog/Post83_coroutines-more-than-you-want-to-know)      
+[VR声音入门](http://www.gameres.com/696819.html)
 
 ### 其他
 [下载Google Play上的App](http://tingyuan.me/apkdownload/)
