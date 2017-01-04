@@ -106,8 +106,9 @@ H5与Native之争，没有高下，现在都是Hybrid App（混合型应用）�
 
 ### Unity
 [协程](http://twistedoakstudios.com/blog/Post83_coroutines-more-than-you-want-to-know)      
-[VR声音入门](http://www.gameres.com/696819.html)
+[VR声音入门](http://www.gameres.com/696819.html)         
 [HRTF音频3D定位技术综述](http://www.soomal.com/doc/10100000146.htm)
+[HRTF 3D音效简明算法](http://www.mahong.me/archives/97)     
 
 ### 其他
 [下载Google Play上的App](http://tingyuan.me/apkdownload/)
