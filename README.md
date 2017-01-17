@@ -108,10 +108,15 @@ H5与Native之争，没有高下，现在都是Hybrid App（混合型应用）�
 [协程](http://twistedoakstudios.com/blog/Post83_coroutines-more-than-you-want-to-know)       
 
 ### VR声音
-[VR声音入门](http://www.gameres.com/696819.html)           
+[VR声音入门](http://www.gameres.com/696819.html)                    
 [HRTF音频3D定位技术综述](http://www.soomal.com/doc/10100000146.htm)       
 [HRTF 3D音效简明算法](http://www.mahong.me/archives/97)      
 [HRTF Sound Localization](http://cdn.intechopen.com/pdfs/15110/InTech-Hrtf_sound_localization.pdf)
+
+### VR视觉
+VR视觉有三个关键技术指标：延迟时长（一般要低于20ms)、帧率（一般要高于90)、分辨率（一种指头显，现在2K是主流，向4K升级中）。如果这三个技术指标不达标，会导致炫晕或画面颗粒感。先科普下这个三个指标。
+[VR为何会延迟？Oculus首席科学家解惑](http://zkread.com.cn/article/651283.html)                
+[一篇看盡「VR 暈眩」的原因以及解決之道](http://www.hksilicon.com/articles/1053978)          
 
 ### 其他
 [下载Google Play上的App](http://tingyuan.me/apkdownload/)
