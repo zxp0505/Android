@@ -106,6 +106,7 @@ H5与Native之争，没有高下，现在都是Hybrid App（混合型应用）�
 
 ### Unity
 [协程](http://twistedoakstudios.com/blog/Post83_coroutines-more-than-you-want-to-know)       
+[Unity3D之Mesh](http://www.cnphp6.com/detail/15375)                
 
 ### VR声音
 [VR声音入门](http://www.gameres.com/696819.html)                     
@@ -118,7 +119,9 @@ VR视觉有三个关键技术指标：延迟时长（一般要低于20ms)、帧�
 先看下面的链接科普下：                                  
 [VR为何会延迟？Oculus首席科学家解惑](http://zkread.com.cn/article/651283.html)                       
 [一篇看盡「VR 暈眩」的原因以及解決之道](http://www.hksilicon.com/articles/1053978)                     
-[为什么VR游戏玩完后会头晕、恶心？](https://www.zhihu.com/question/36244458/answer/87994209)                  
+[为什么VR游戏玩完后会头晕、恶心？](https://www.zhihu.com/question/36244458/answer/87994209)             
+  
+[全景视频JS组件](https://krpano.com/video/)
 
 ### 其他
 [下载Google Play上的App](http://tingyuan.me/apkdownload/)
