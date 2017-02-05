@@ -3,6 +3,17 @@
     <!-- Base application theme. -->
     <style name="AppTheme">
         <!-- Customize your theme here. -->
+        <item name="theme_style">@style/custom_theme</item>
+    </style>
+
+    <style name="custom_theme">
+        <item name="custom_attr1">theme 1</item>
+        <item name="custom_attr2">theme 2</item>
+    </style>
+
+    <style name="default_style">
+        <item name="custom_attr1">default 1</item>
+        <item name="custom_attr2">default 2</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

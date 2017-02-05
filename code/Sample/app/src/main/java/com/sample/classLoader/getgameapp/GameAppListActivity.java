@@ -102,6 +102,7 @@ public class GameAppListActivity extends Activity {
             // fill data
             ViewHolder holder = (ViewHolder) rowView.getTag();
             String s = mAppList.get(position).appName;
+            s += "(" + mAppList.get(position).packageName + ")";
             holder.text.setText(s);
 
             final GetGameApp.AppInfo appInfo = mAppList.get(position);

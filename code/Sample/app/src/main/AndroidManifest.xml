@@ -3,51 +3,98 @@
     package="com.sample">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
 
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:debuggable="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="APP_DELEGATE"
+            android:value=".App" />
+        <!-- <service android:name="moai.patch.PatchService" android:exported="false" android:enabled="true" android:process=":patch" /> -->
+        <meta-data
+            android:name="com.sample.glide.CustomCachingGlideModule"
+            android:value="GlideModule" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MediaProjectionDemo">
-        </activity>
-
+        <activity android:name=".MediaProjectionDemo" />
         <activity
             android:name=".classLoader.getgameapp.GameAppListActivity"
             android:label="@string/title_activity_list_view_activty"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        >
+        <activity
+            android:name=".web.WebViewActivity"
+            android:label="WebView" />
+        <activity
+            android:name=".lifecycle.ActivityA"
+            android:configChanges="orientation"
+            android:label="ActivityA" />
+        <activity
+            android:name=".lifecycle.ActivityB"
+            android:label="ActivityB" />
+        <activity android:name=".Fragment.MyActivtiy" />
+        <activity
+            android:name=".classLoader.ClassLoaderActivity"
+            android:process=":classLoader" />
+        <activity android:name=".record.RecordActivity" />
+        <activity android:name=".record.ScreenCapture$TemActivity" />
 
-        <activity android:name=".web.WebViewActivity"
-            android:label="WebView">
-        </activity>
+        <service
+            android:name="com.tencent.qqgamemi.srp.media.newapi.ScreenRecorderService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.serenegiant.service.ScreenRecorderService.ACTION_START" />
+            </intent-filter>
+        </service>
 
-        <activity android:name=".lifecycle.ActivityA"
-            android:label="ActivityA"
-            android:configChanges="orientation">
-        </activity>
+        <activity android:name=".opengles.OpenGLActivity" />
+        <activity android:name=".multiprocess.ProcessActivity" />
 
-        <activity android:name=".lifecycle.ActivityB"
-            android:label="ActivityB">
-        </activity>
+        <service
+            android:name=".multiprocess.ProcessService"
+            android:process=":process" />
 
-        <activity android:name="com.sample.Fragment.MyActivtiy">
-        </activity>
+        <activity android:name=".attr_style.AttrStyleActivity" />
+        <activity android:name=".glide.GlideActivity" />
+        <activity android:name=".statsUsage.StatsUsageActivity" />
+        <activity android:name=".dialog.DialogActivity" />
+        <activity android:name=".hotfix.dex.HotFixActivity" />
+        <activity
+            android:name=".crashreport.TestCrashActivity"
+            android:label="@string/title_activity_test_crash" />
+        <activity android:name=".sleep.TestSleepActivity" />
 
-        <activity android:name=".classLoader.ClassLoaderActivity">
-        </activity>
+        <receiver android:name=".sleep.TestSleepActivity$SimpleBroadCastReceiver">
 
+            <!-- android:priority属性是设置此接收者的优先级（从-1000到1000） -->
+            <intent-filter android:priority="20">
+                <action android:name="com.sample.alarm" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".anr.ANRTestActivity" />
+        <activity android:name=".network.NetworkActivity" />
+        <activity android:name=".architect.mvc.MVCActivity" />
+        <activity android:name=".architect.mvp.view.MVPActivity" />
+        <activity android:name=".animator.AnimatorActivity" />
+        <activity
+            android:name=".audio.AudioActivity"
+            android:label="@string/title_activity_audio"></activity>
     </application>
 
 </manifest>
